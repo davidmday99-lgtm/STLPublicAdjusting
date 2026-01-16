@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STL Public Adjusting | Public Adjuster & Appraisal Support</title>
+  <meta name="description" content="STL Public Adjusting helps residential and commercial property owners navigate insurance claims and appraisals to reach a fair settlement." />
+
+  <style>
+    /* Cardinals-inspired palette (not official MLB assets) */
+    :root{
+      --bg:#071018;
+      --panel:#0b1723;
+      --text:#f3f6fb;
+      --muted:#c2cbd8;
+      --line:rgba(255,255,255,.10);
+
+      --red:#C41E3A;     /* Cardinals-style red */
+      --navy:#0C2340;    /* deep navy */
+      --gold:#FFC72C;    /* accent */
+      --shadow: 0 12px 34px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1120px;
+      --pad:22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 15% 0%, rgba(196,30,58,.18) 0%, rgba(7,16,24,0) 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(12,35,64,.35) 0%, rgba(7,16,24,0) 55%),
+        linear-gradient(180deg, #061019 0%, var(--bg) 100%);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(7,16,24,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:22px 0;
+      gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:22px; min-width:420px}
+    .brand img {
+  width: 200px !important;
+  height: 200px !important;
+  object-fit: contain !important;
+}
+    .brand .name{font-size:26px; font-weight:900; letter-spacing:.4px; font-size:28px;}
+    .brand .tag{font-size:15px; color:var(--muted); margin-top:2px;}
+
+    .links{display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+    .links a{font-size:14px; color:var(--muted)}
+    .links a:hover{color:var(--text)}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      gap:8px;
+      font-weight:800;
+      transition:.15s transform, .15s filter, .15s background;
+      white-space:nowrap;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--red), #ff4d6d);
+      border-color: rgba(0,0,0,0);
+      color:#140208;
+    }
+    .btn.secondary{
+      background: linear-gradient(135deg, rgba(12,35,64,.9), rgba(12,35,64,.55));
+      border-color: rgba(255,255,255,.12);
+    }
+    .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
+
+    /* Layout */
+    .hero{padding:56px 0 20px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:20px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .links{gap:10px}
+      .brand{min-width:auto}
+    }
+
+    .card{
+      background: rgba(11,23,35,.82);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.25), 0 8px 28px rgba(0,0,0,.6);
+      padding: var(--pad);
+      overflow:hidden;
+    }
+
+    .kicker{
+      color: rgba(255,255,255,.9);
+      font-weight:900;
+      letter-spacing:.25px;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .kicker .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(255,199,44,.12);
+    }
+
+    h1{
+      margin:10px 0 10px;
+      font-size:42px;
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    @media (max-width: 680px){ h1{font-size:34px} }
+
+    .sub{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      margin:0 0 18px;
+    }
+
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+
+    .mini{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:10px;
+      margin-top:18px;
+    }
+    @media (max-width: 680px){ .mini{grid-template-columns:1fr} }
+
+    .pill{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+      padding: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.35;
+    }
+    .pill b{color:var(--text)}
+    .pill strong{color:var(--gold)}
+
+    .section{padding:16px 0}
+    .section h2{
+      margin:0 0 12px;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    @media (max-width: 920px){ .grid3{grid-template-columns:1fr} }
+
+    .service{
+      position:relative;
+      min-height:160px;
+      padding:18px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+    }
+    .service::before{
+      content:"";
+      position:absolute; inset:0;
+      background-size:cover;
+      background-position:center;
+      filter: saturate(1.1) contrast(1.05);
+      opacity:.30;
+      transform: scale(1.02);
+    }
+    .service::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(90deg, rgba(7,16,24,.92) 0%, rgba(7,16,24,.70) 55%, rgba(7,16,24,.55) 100%);
+    }
+    .service .inner{position:relative; z-index:1}
+    .service h3{margin:0 0 6px; font-size:16px}
+    .service p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
+
+    /* Stock photos via Unsplash Source (free hotlink). Replace later with your own if desired. */
+    .hail::before{background-image:url('https://source.unsplash.com/1200x800/?hail,roof,storm');}
+    .water::before{background-image:url('https://source.unsplash.com/1200x800/?water-damage,leak,ceiling');}
+    .fire::before{background-image:url('https://source.unsplash.com/1200x800/?fire-damage,smoke,house');}
+
+    .appraisal::before{background-image:url('https://source.unsplash.com/1200x800/?insurance,appraisal,documents');}
+
+
+    .split{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    @media (max-width: 920px){ .split{grid-template-columns:1fr} }
+
+    .quote{
+      border-left: 3px solid rgba(255,199,44,.85);
+      padding-left: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.6;
+      margin: 10px 0 0;
+    }
+
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(196,30,58,.14);
+      border:1px solid rgba(196,30,58,.35);
+      color: rgba(255,255,255,.88);
+      font-size: 13px;
+      width:fit-content;
+    }
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:16px 0}
+    .fine{font-size:12px; color:#aeb9c9; line-height:1.45}
+
+    .faq button{
+      width:100%;
+      text-align:left;
+      background: transparent;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-weight:900;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .faq button:hover{background: rgba(255,255,255,.03)}
+    .faq .a{
+      display:none;
+      color:var(--muted);
+      padding:10px 4px 0 4px;
+      font-size:14px;
+      line-height:1.55;
+    }
+    .faq .row{margin-bottom:10px}
+
+    .form label{display:block; font-size:13px; color:var(--muted); margin:10px 0 6px}
+    .form input, .form textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      outline:none;
+    }
+    .form textarea{min-height:110px; resize:vertical}
+    .form .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width: 680px){ .form .row2{grid-template-columns:1fr} }
+    .note{color:var(--muted); font-size:12px; margin-top:8px}
+
+    footer{padding:24px 0 40px; color:var(--muted); font-size:13px}
+
+    /* Small contract embed */
+    .pdf-wrap{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      overflow:hidden;
+      background: rgba(255,255,255,.02);
+    }
+    .pdf-wrap iframe{
+      width:100%;
+      height: clamp(420px, 70vh, 780px);
+      border:0;
+      background: rgba(0,0,0,.2);
+    }
+  
+/* Lock header logo size so hero image styles never affect it */
+.brand img {
+  width: 200px !important;
+  height: 200px !important;
+  object-fit: contain !important;
+}
+
+
+/* Hero photo only */
+.hero-photo {
+  width: 100%;
+  height: clamp(420px, 55vw, 720px);
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+  box-shadow: 0 12px 34px rgba(0,0,0,.45);
+}
+
+
+    @media (max-width: 680px){
+      .pdf-wrap iframe{ height: 78vh; }
+    }
+    
+
+
+    /* Mobile: prevent nav overflow and stack links */
+    @media (max-width: 860px){
+      .nav{flex-direction:column; align-items:flex-start; padding:14px 0;}
+      .brand{min-width:0; width:100%; gap:14px;}
+      .brand img{width:150px !important; height:150px !important;}
+      .links{width:100%; justify-content:flex-start; flex-wrap:wrap; gap:12px;}
+      .links a{padding:8px 10px; border-radius:999px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);}
+      .btn{white-space:nowrap;}
+      .topbar .container{padding-left:16px; padding-right:16px;}
+    }
+    
+
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:18px;}
+    @media (max-width: 860px){ .grid2{grid-template-columns:1fr;} }
+    </style>
+</head>
+
+<body>
+
+<main>
+  <div class="container">
+<section class="section" id="contact">
+      <div class="card">
+        <h2>Get help now</h2>
+        <p class="sub">Send your details and we’ll respond with next steps.</p>
+
+        <form class="form" action="https://formspree.io/f/mlggdgpk" method="POST">
+          <input type="hidden" name="_subject" value="New STL Public Adjusting web lead" />
+          <div class="row2">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required placeholder="Your name" />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required placeholder="(###) ###-####" />
+            </div>
+          </div>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@email.com" />
+
+          <div class="row2">
+            <div>
+              <label for="claim">Claim Number (optional)</label>
+              <input id="claim" name="claim" placeholder="Claim #" />
+            </div>
+            <div>
+              <label for="lossdate">Date of Loss (optional)</label>
+              <input id="lossdate" name="lossdate" placeholder="MM/DD/YYYY" />
+            </div>
+          </div>
+
+          <label for="message">What happened?</label>
+          <textarea id="message" name="message" required placeholder="Brief description of damage and what the carrier has done so far."></textarea>
+
+          <div class="cta-row" style="margin-top:12px;">
+            <button class="btn primary" type="submit">Send Request</button>
+            <a class="btn" href="tel:+13149223083">Call Now</a>
+          </div>
+
+          </form>
+      </div>
+    </section>
+
+</div>
+</main>
+</body>
+</html>
