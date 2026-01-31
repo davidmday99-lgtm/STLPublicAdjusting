@@ -34,18 +34,19 @@ function parseFrontMatter(md){
   return { meta, body };
 }
 
-async function listMarkdown(dir){
+async function listMarkdown(dir, { excludeNames = [] } = {}){
   let entries = [];
   try{ entries = await fs.readdir(dir, { withFileTypes: true }); }
   catch{ return []; }
+  const exclude = new Set(excludeNames.map(s => s.toLowerCase()));
   const files = entries
-    .filter(e => e.isFile() && e.name.toLowerCase().endsWith('.md'))
+    .filter(e => e.isFile() && e.name.toLowerCase().endsWith('.md') && !exclude.has(e.name.toLowerCase()))
     .map(e => path.join(dir, e.name));
   return files;
 }
 
 async function build(){
-  const files = await listMarkdown(POSTS_DIR);
+  const files = await listMarkdown(POSTS_DIR, { excludeNames: ['README.md'] });
   const posts = [];
   for(const file of files){
     const md = await fs.readFile(file, 'utf8');
@@ -62,13 +63,15 @@ async function build(){
     const title = escapeHtml(p.title);
     const date = escapeHtml(p.date);
     return `
-          <div class="post">
-            <h3><a href="${href}" style="text-decoration:underline;">${title}</a></h3>
-            ${date ? `<p class="fine">${date}</p>` : ''}
-          </div>`;
+          <li class="post">
+            <a class="post-link" href="${href}">
+              <div class="post-title">${title}</div>
+              ${date ? `<div class="fine">${date}</div>` : ''}
+            </a>
+          </li>`;
   }).join('\n');
 
-  const drafts = await listMarkdown(DRAFTS_DIR);
+  const drafts = await listMarkdown(DRAFTS_DIR, { excludeNames: ['README.md'] });
   const queuedCount = drafts.length;
 
   const html = `<!doctype html>
@@ -159,15 +162,18 @@ async function build(){
     h1{margin:0 0 8px; font-size:34px; letter-spacing:-.5px}
     .sub{color:var(--muted); font-size:16px; line-height:1.55; margin:0 0 18px}
 
-    .posts{display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px}
+    .posts{list-style:none; padding:0; margin:18px 0 0; display:grid; grid-template-columns:1fr; gap:12px}
     .post{
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       border-radius: 16px;
-      padding: 14px;
+      overflow:hidden;
     }
+    .post-link{display:block; padding:16px; text-decoration:none;}
+    .post-link:hover{background: rgba(255,255,255,.035)}
+    .post-title{font-size:16px; font-weight:900; letter-spacing:-.1px;}
 
-    .fine{font-size:12px; color:#aeb9c9; line-height:1.45; margin:0}
+    .fine{font-size:12px; color:#aeb9c9; line-height:1.45; margin-top:6px}
 
     @media (max-width: 860px){
       .nav{flex-direction:column; align-items:flex-start; padding:14px 0;}
@@ -205,9 +211,13 @@ async function build(){
         <h1>Blog</h1>
         <p class="sub">Tips, checklists, and claim guidance. (${queuedCount} queued drafts)</p>
 
-        <div class="posts">
-          ${itemsHtml || '<p class="fine">No posts published yet.</p>'}
+        <div class="sub" style="margin-top:4px;">
+          Latest posts (new post publishes daily at 7am CT)
         </div>
+
+        <ul class="posts">
+          ${itemsHtml || '<li class="post"><div class="post-link"><div class="post-title">No posts published yet</div><div class="fine">Your first post will appear here after the next scheduled publish.</div></div></li>'}
+        </ul>
       </div>
     </div>
   </main>

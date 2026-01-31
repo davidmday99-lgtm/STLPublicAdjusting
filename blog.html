@@ -86,15 +86,18 @@
     h1{margin:0 0 8px; font-size:34px; letter-spacing:-.5px}
     .sub{color:var(--muted); font-size:16px; line-height:1.55; margin:0 0 18px}
 
-    .posts{display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px}
+    .posts{list-style:none; padding:0; margin:18px 0 0; display:grid; grid-template-columns:1fr; gap:12px}
     .post{
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       border-radius: 16px;
-      padding: 14px;
+      overflow:hidden;
     }
+    .post-link{display:block; padding:16px; text-decoration:none;}
+    .post-link:hover{background: rgba(255,255,255,.035)}
+    .post-title{font-size:16px; font-weight:900; letter-spacing:-.1px;}
 
-    .fine{font-size:12px; color:#aeb9c9; line-height:1.45; margin:0}
+    .fine{font-size:12px; color:#aeb9c9; line-height:1.45; margin-top:6px}
 
     @media (max-width: 860px){
       .nav{flex-direction:column; align-items:flex-start; padding:14px 0;}
@@ -130,15 +133,15 @@
     <div class="wrap">
       <div class="card">
         <h1>Blog</h1>
-        <p class="sub">Tips, checklists, and claim guidance. (2 queued drafts)</p>
+        <p class="sub">Tips, checklists, and claim guidance. (5 queued drafts)</p>
 
-        <div class="posts">
-          
-          <div class="post">
-            <h3><a href="./posts/README.html" style="text-decoration:underline;">README</a></h3>
-            
-          </div>
+        <div class="sub" style="margin-top:4px;">
+          Latest posts (new post publishes daily at 7am CT)
         </div>
+
+        <ul class="posts">
+          <li class="post"><div class="post-link"><div class="post-title">No posts published yet</div><div class="fine">Your first post will appear here after the next scheduled publish.</div></div></li>
+        </ul>
       </div>
     </div>
   </main>
