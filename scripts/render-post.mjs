@@ -84,6 +84,7 @@ async function renderOne(filePath){
   const { meta, body } = parseFrontMatter(md);
   const title = meta.title || path.basename(filePath, '.md');
   const date = meta.date || '';
+  const author = meta.author || '';
   const htmlBody = mdToHtml(body);
 
   return `<!doctype html>
@@ -140,6 +141,7 @@ async function renderOne(filePath){
     h2{margin-top:22px}
     ul{margin:10px 0 10px 20px}
     .meta{color:var(--muted); font-size:13px; margin-top:4px}
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:18px 0}
   </style>
 </head>
 <body>
@@ -160,6 +162,8 @@ async function renderOne(filePath){
     <div class="wrap">
       <div class="card">
         ${htmlBody}
+        <div class="divider"></div>
+        ${author ? `<div class="meta">${escapeHtml(author)}</div>` : ''}
         ${date ? `<div class="meta">Published: ${escapeHtml(date)}</div>` : ''}
       </div>
     </div>

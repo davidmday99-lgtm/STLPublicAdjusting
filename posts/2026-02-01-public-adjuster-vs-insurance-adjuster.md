@@ -4,6 +4,7 @@ date: "2026-02-01"
 length: "medium"
 audience: "residential, commercial"
 category: "basics"
+author: "STL Public Adjusting — David Day"
 cta_url: "/contact-form.html#form"
 cta_text: "Request a claim review"
 ---
