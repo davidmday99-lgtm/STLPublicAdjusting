@@ -1,4 +1,77 @@
-<!doctype html>
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+const ROOT = process.cwd();
+const POSTS_DIR = path.join(ROOT, 'posts');
+const DRAFTS_DIR = path.join(ROOT, 'drafts');
+const BLOG_PATH = path.join(ROOT, 'blog.html');
+
+function escapeHtml(s=''){
+  return s
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#39;');
+}
+
+function parseFrontMatter(md){
+  if(!md.startsWith('---')) return { meta: {}, body: md };
+  const end = md.indexOf('\n---', 3);
+  if(end === -1) return { meta: {}, body: md };
+  const fm = md.slice(3, end).trim();
+  const body = md.slice(end + '\n---'.length).trimStart();
+  const meta = {};
+  for(const line of fm.split(/\r?\n/)){
+    const m = line.match(/^([A-Za-z0-9_\-]+):\s*(.*)$/);
+    if(!m) continue;
+    let v = m[2].trim();
+    if((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))){
+      v = v.slice(1,-1);
+    }
+    meta[m[1]] = v;
+  }
+  return { meta, body };
+}
+
+async function listMarkdown(dir){
+  let entries = [];
+  try{ entries = await fs.readdir(dir, { withFileTypes: true }); }
+  catch{ return []; }
+  const files = entries
+    .filter(e => e.isFile() && e.name.toLowerCase().endsWith('.md'))
+    .map(e => path.join(dir, e.name));
+  return files;
+}
+
+async function build(){
+  const files = await listMarkdown(POSTS_DIR);
+  const posts = [];
+  for(const file of files){
+    const md = await fs.readFile(file, 'utf8');
+    const { meta } = parseFrontMatter(md);
+    const slug = path.basename(file, '.md');
+    const title = meta.title || slug;
+    const date = meta.date || '';
+    posts.push({ file, slug, title, date });
+  }
+  posts.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+
+  const itemsHtml = posts.map(p => {
+    const href = `./posts/${encodeURIComponent(p.slug)}.html`;
+    const title = escapeHtml(p.title);
+    const date = escapeHtml(p.date);
+    return `
+          <div class="post">
+            <h3><a href="${href}" style="text-decoration:underline;">${title}</a></h3>
+            ${date ? `<p class="fine">${date}</p>` : ''}
+          </div>`;
+  }).join('\n');
+
+  const drafts = await listMarkdown(DRAFTS_DIR);
+  const queuedCount = drafts.length;
+
+  const html = `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -130,14 +203,10 @@
     <div class="wrap">
       <div class="card">
         <h1>Blog</h1>
-        <p class="sub">Tips, checklists, and claim guidance. (2 queued drafts)</p>
+        <p class="sub">Tips, checklists, and claim guidance. (${queuedCount} queued drafts)</p>
 
         <div class="posts">
-          
-          <div class="post">
-            <h3><a href="./posts/README.html" style="text-decoration:underline;">README</a></h3>
-            
-          </div>
+          ${itemsHtml || '<p class="fine">No posts published yet.</p>'}
         </div>
       </div>
     </div>
@@ -157,3 +226,10 @@
   </script>
 </body>
 </html>
+`;
+
+  await fs.writeFile(BLOG_PATH, html, 'utf8');
+  console.log(`Built blog.html with ${posts.length} posts. Draft queue: ${queuedCount}.`);
+}
+
+await build();
