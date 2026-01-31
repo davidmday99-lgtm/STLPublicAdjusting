@@ -40,7 +40,7 @@
 
     /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:10;
+      position:fixed; top:0; left:0; right:0; z-index:9999;
       backdrop-filter: blur(10px);
       background: rgba(7,16,24,.72);
       border-bottom:1px solid var(--line);
@@ -377,5 +377,19 @@
 
 </div>
 </main>
+
+<script>
+  // Keep header fixed and prevent content hiding under it
+  (function(){
+    const topbar = document.querySelector('.topbar');
+    function applyPad(){
+      if(!topbar) return;
+      document.body.style.paddingTop = topbar.offsetHeight + 'px';
+    }
+    window.addEventListener('load', applyPad);
+    window.addEventListener('resize', applyPad);
+    applyPad();
+  })();
+</script>
 </body>
 </html>

@@ -40,7 +40,7 @@
 
     /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:10;
+      position:fixed; top:0; left:0; right:0; z-index:9999;
       backdrop-filter: blur(10px);
       background: rgba(7,16,24,.72);
       border-bottom:1px solid var(--line);
@@ -343,6 +343,7 @@
           <a href="#contract">Contract</a>
           <a href="#appraisal">Appraisal</a>
           <a href="#faq">FAQ</a>
+          <a href="./blog.html">Blog</a>
           <a class="btn" href="./contact.html">Contact</a>
           <a class="btn" href="./contact-form.html#form">Questions? Contact us</a>
           <a href="./contact-form.html#form" class="btn primary">Get Help Now</a>
@@ -589,6 +590,18 @@
         btn.querySelector('span').textContent = open ? '+' : '–';
       });
     });
+
+    // Keep header fixed and prevent content hiding under it
+    (function(){
+      const topbar = document.querySelector('.topbar');
+      function applyPad(){
+        if(!topbar) return;
+        document.body.style.paddingTop = topbar.offsetHeight + 'px';
+      }
+      window.addEventListener('load', applyPad);
+      window.addEventListener('resize', applyPad);
+      applyPad();
+    })();
 
     // Mailto form (free fallback)
     document.getElementById('y').textContent = new Date().getFullYear();
