@@ -183,7 +183,9 @@ async function renderOne(filePath){
 
 async function main(){
   const entries = await fs.readdir(POSTS_DIR, { withFileTypes: true });
-  const mdFiles = entries.filter(e => e.isFile() && e.name.toLowerCase().endsWith('.md')).map(e => e.name);
+  const mdFiles = entries
+    .filter(e => e.isFile() && e.name.toLowerCase().endsWith('.md') && e.name.toLowerCase() !== 'readme.md')
+    .map(e => e.name);
   for(const name of mdFiles){
     const src = path.join(POSTS_DIR, name);
     const out = path.join(POSTS_DIR, path.basename(name, '.md') + '.html');
