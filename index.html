@@ -1,15 +1,6 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-76DD8BTM10"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-76DD8BTM10');
-</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>STL Public Adjusting | Public Adjuster & Appraisal Support</title>
@@ -49,7 +40,7 @@
 
     /* Top bar */
     .topbar{
-      position:fixed; top:0; left:0; right:0; z-index:9999;
+      position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
       background: rgba(7,16,24,.72);
       border-bottom:1px solid var(--line);
@@ -120,7 +111,7 @@
       color: rgba(255,255,255,.9);
       font-weight:900;
       letter-spacing:.25px;
-      font-size:16px;
+      font-size:13px;
       display:inline-flex;
       align-items:center;
       gap:8px;
@@ -337,15 +328,6 @@
 <body>
   <!-- Logo embedded directly in this HTML so it always shows (no separate file needed). -->
   <header class="topbar">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-76DD8BTM10"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-76DD8BTM10');
-</script>
     <div class="wrap">
       <div class="nav">
         <div class="brand">
@@ -362,8 +344,7 @@
           <a href="#appraisal">Appraisal</a>
           <a href="#faq">FAQ</a>
           <a href="./blog.html">Blog</a>
-          <a class="btn" href="./contact.html">Contact</a>
-          <a class="btn" href="./contact-form.html#form">Questions? Contact us</a>
+          <a href="./contact.html">Contact</a>
           <a href="./contact-form.html#form" class="btn primary">Get Help Now</a>
         </nav>
       </div>
@@ -375,7 +356,7 @@
     <section class="hero" id="top">
       <div class="hero-grid">
         <div class="card">
-          <div class="kicker"><span class="dot"></span>Serving the St. Louis Metro &bull; Missouri &amp; Illinois</div>
+          <div class="kicker"><span class="dot"></span>Serving the St. Louis Metro • Missouri & Illinois</div>
           <h1>Don’t accept an undervalued insurance settlement.</h1>
           <p class="sub">
             We help residential and commercial property owners document damages, prepare strong estimates,
@@ -383,7 +364,7 @@
           </p>
 
           <div class="cta-row">
-           <a class="btn primary" href="./contact-form.html#form">Free Claim Review</a>
+           <a class="btn primary" href="./contact.html#form">Free Claim Review</a>
             <a class="btn secondary" href="#contract">View Contract</a>
             <a class="btn" href="#services">What We Handle</a>
           </div>
@@ -402,7 +383,7 @@
             Tell us what happened and we’ll confirm next steps (inspection, documentation, supplement, or appraisal).
           </p>
           <div class="cta-row">
-            <a class="btn" href="./contact-form.html#form">Check Claim</a>
+            <a class="btn" href="./contact.html#form">Check Claim</a>
             <a class="btn" href="tel:+13149223083">Call: (314) 922-3083</a>
           </div>
 
@@ -466,7 +447,7 @@
 
         <div class="cta-row" style="margin-bottom:12px;">
           <a class="btn primary" href="Penguin_Investments_Appraiser_Retainer_All_225_HR.pdf" target="_blank" rel="noopener">Download PDF</a>
-          <a class="btn" href="./contact-form.html#form">Questions? Contact us</a>
+          <a class="btn" href="./contact.html#form">Questions? Contact us</a>
         </div>
 
         
@@ -504,7 +485,7 @@
               We can generate one based on your carrier, claim number, and policy details.
             </div>
             <div class="cta-row" style="margin-top:10px;">
-              <a class="btn primary" href="./contact-form.html#form">Request Appraisal Help</a>
+              <a class="btn primary" href="./contact.html#form">Request Appraisal Help</a>
               <a class="btn" href="#faq">Appraisal FAQ</a>
             </div>
           </div>
@@ -609,22 +590,8 @@
       });
     });
 
-    // Keep header fixed and prevent content hiding under it
-    (function(){
-      const topbar = document.querySelector('.topbar');
-      function applyPad(){
-        if(!topbar) return;
-        document.body.style.paddingTop = topbar.offsetHeight + 'px';
-      }
-      window.addEventListener('load', applyPad);
-      window.addEventListener('resize', applyPad);
-      applyPad();
-    })();
-
     // Mailto form (free fallback)
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
-
