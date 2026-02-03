@@ -55,6 +55,6 @@ Denials can come from:
 
 If you’re in Missouri or Illinois, we can review the denial reasoning and the file to see what’s missing.
 
-**Request a claim review:** /contact-form.html#form
+**Request a claim review:** [Contact form](/contact-form.html#form)
 
 — STL Public Adjusting — David Day

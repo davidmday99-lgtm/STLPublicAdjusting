@@ -69,6 +69,6 @@ Depreciation is a common friction point. If you can’t explain how the carrier 
 
 If you want help reviewing the estimate and building a clean, policy-backed supplement, we can help.
 
-**Request a claim review:** /contact-form.html#form
+**Request a claim review:** [Contact form](/contact-form.html#form)
 
 — STL Public Adjusting — David Day

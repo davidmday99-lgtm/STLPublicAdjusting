@@ -73,6 +73,6 @@ Create a single claim folder (phone or computer) with:
 
 If you’re in the St. Louis metro (Missouri or Illinois), we can review your documentation and the carrier’s scope/estimate.
 
-**Request a claim review:** /contact-form.html#form
+**Request a claim review:** [Contact form](/contact-form.html#form)
 
 — STL Public Adjusting — David Day

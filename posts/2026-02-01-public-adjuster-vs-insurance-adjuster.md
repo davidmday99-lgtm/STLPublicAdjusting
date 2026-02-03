@@ -82,6 +82,6 @@ If you think you’re heading toward appraisal, the earlier you get organized (s
 
 If you’re in the St. Louis metro (Missouri or Illinois) and you want a second set of eyes on your claim file or estimate, we can help.
 
-**Request a claim review:** /contact-form.html#form
+**Request a claim review:** [Contact form](/contact-form.html#form)
 
 *Note: This post is general information, not legal advice. Every policy and loss is different.*
