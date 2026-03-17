@@ -1,611 +1,89 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STL Public Adjusting | St. Louis Public Adjuster & Insurance Appraisal Support</title>
-  <meta name="description" content="St. Louis public adjuster helping homeowners and businesses navigate insurance claims, appraisals, and fair settlements. Licensed in Missouri & Illinois. Free consultation." />
-  <meta name="keywords" content="public adjuster St. Louis, insurance claim help Missouri, property damage appraisal, hail damage claim, water damage claim, fire damage claim, STL public adjusting" />
-  <link rel="canonical" href="https://stlpublicadjusting.com/" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "STL Public Adjusting",
-    "description": "Licensed public adjuster serving St. Louis, Missouri and Illinois. Insurance claim help, property damage appraisal, and settlement advocacy.",
-    "url": "https://stlpublicadjusting.com",
-    "areaServed": ["St. Louis", "Missouri", "Illinois"],
-    "serviceType": ["Public Adjusting", "Insurance Appraisal", "Property Damage Claims"],
-    "priceRange": "$$"
-  }
-  </script>
-
+  <title>STL Public Adjusting | Coming Soon</title>
+  <meta name="description" content="STL Public Adjusting — St. Louis public adjuster. Site under maintenance. Coming soon with full services." />
   <style>
-    /* Cardinals-inspired palette (not official MLB assets) */
     :root{
       --bg:#071018;
       --panel:#0b1723;
       --text:#f3f6fb;
       --muted:#c2cbd8;
-      --line:rgba(255,255,255,.10);
-
-      --red:#C41E3A;     /* Cardinals-style red */
-      --navy:#0C2340;    /* deep navy */
-      --gold:#FFC72C;    /* accent */
-      --shadow: 0 12px 34px rgba(0,0,0,.45);
-      --radius:18px;
-      --max:1120px;
-      --pad:22px;
+      --accent:#c8102e;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{margin:0;padding:0;box-sizing:border-box}
     body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+      background:var(--bg);
       color:var(--text);
-      background:
-        radial-gradient(1100px 700px at 15% 0%, rgba(196,30,58,.18) 0%, rgba(7,16,24,0) 55%),
-        radial-gradient(900px 600px at 85% 10%, rgba(12,35,64,.35) 0%, rgba(7,16,24,0) 55%),
-        linear-gradient(180deg, #061019 0%, var(--bg) 100%);
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-
-    /* Top bar */
-    .topbar{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(10px);
-      background: rgba(7,16,24,.72);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:22px 0;
-      gap:14px;
-    }
-    .brand{display:flex; align-items:center; gap:22px; min-width:420px}
-    .brand img {
-  width: 200px !important;
-  height: 200px !important;
-  object-fit: contain !important;
-}
-    .brand .name{font-size:26px; font-weight:900; letter-spacing:.4px; font-size:28px;}
-    .brand .tag{font-size:15px; color:var(--muted); margin-top:2px;}
-
-    .links{display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
-    .links a{font-size:14px; color:var(--muted)}
-    .links a:hover{color:var(--text)}
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      gap:8px;
-      font-weight:800;
-      transition:.15s transform, .15s filter, .15s background;
-      white-space:nowrap;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, var(--red), #ff4d6d);
-      border-color: rgba(0,0,0,0);
-      color:#140208;
-    }
-    .btn.secondary{
-      background: linear-gradient(135deg, rgba(12,35,64,.9), rgba(12,35,64,.55));
-      border-color: rgba(255,255,255,.12);
-    }
-    .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
-
-    /* Layout */
-    .hero{padding:56px 0 20px}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:20px;
-      align-items:stretch;
-    }
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr}
-      .links{gap:10px}
-      .brand{min-width:auto}
-    }
-
-    .card{
-      background: rgba(11,23,35,.82);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      box-shadow: 0 0 0 3px rgba(255,255,255,.25), 0 8px 28px rgba(0,0,0,.6);
-      padding: var(--pad);
-      overflow:hidden;
-    }
-
-    .kicker{
-      color: rgba(255,255,255,.9);
-      font-weight:900;
-      letter-spacing:.25px;
-      font-size:13px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .kicker .dot{
-      width:8px; height:8px; border-radius:99px;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(255,199,44,.12);
-    }
-
-    h1{
-      margin:10px 0 10px;
-      font-size:42px;
-      line-height:1.05;
-      letter-spacing:-.8px;
-    }
-    @media (max-width: 680px){ h1{font-size:34px} }
-
-    .sub{
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.55;
-      margin:0 0 18px;
-    }
-
-    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-
-    .mini{
-      display:grid;
-      grid-template-columns: repeat(3,1fr);
-      gap:10px;
-      margin-top:18px;
-    }
-    @media (max-width: 680px){ .mini{grid-template-columns:1fr} }
-
-    .pill{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: 14px;
-      padding: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height:1.35;
-    }
-    .pill b{color:var(--text)}
-    .pill strong{color:var(--gold)}
-
-    .section{padding:16px 0}
-    .section h2{
-      margin:0 0 12px;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
-
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    @media (max-width: 920px){ .grid3{grid-template-columns:1fr} }
-
-    .service{
-      position:relative;
-      min-height:160px;
-      padding:18px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-    }
-    .service::before{
-      content:"";
-      position:absolute; inset:0;
-      background-size:cover;
-      background-position:center;
-      filter: saturate(1.1) contrast(1.05);
-      opacity:.30;
-      transform: scale(1.02);
-    }
-    .service::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(7,16,24,.92) 0%, rgba(7,16,24,.70) 55%, rgba(7,16,24,.55) 100%);
-    }
-    .service .inner{position:relative; z-index:1}
-    .service h3{margin:0 0 6px; font-size:16px}
-    .service p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
-
-    /* Stock photos via Unsplash Source (free hotlink). Replace later with your own if desired. */
-    .hail::before{background-image:url('https://source.unsplash.com/1200x800/?hail,roof,storm');}
-    .water::before{background-image:url('https://source.unsplash.com/1200x800/?water-damage,leak,ceiling');}
-    .fire::before{background-image:url('https://source.unsplash.com/1200x800/?fire-damage,smoke,house');}
-
-    .appraisal::before{background-image:url('https://source.unsplash.com/1200x800/?insurance,appraisal,documents');}
-
-
-    .split{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
-    @media (max-width: 920px){ .split{grid-template-columns:1fr} }
-
-    .quote{
-      border-left: 3px solid rgba(255,199,44,.85);
-      padding-left: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height:1.6;
-      margin: 10px 0 0;
-    }
-
-    .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(196,30,58,.14);
-      border:1px solid rgba(196,30,58,.35);
-      color: rgba(255,255,255,.88);
-      font-size: 13px;
-      width:fit-content;
-    }
-    .divider{height:1px; background: rgba(255,255,255,.10); margin:16px 0}
-    .fine{font-size:12px; color:#aeb9c9; line-height:1.45}
-
-    .faq button{
-      width:100%;
-      text-align:left;
-      background: transparent;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: 14px;
-      padding: 12px 14px;
-      color: var(--text);
-      font-weight:900;
-      cursor:pointer;
+      min-height:100vh;
       display:flex;
-      justify-content:space-between;
-      gap:10px;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:2rem;
     }
-    .faq button:hover{background: rgba(255,255,255,.03)}
-    .faq .a{
-      display:none;
+    .logo{
+      font-size:clamp(1.6rem,4vw,2.4rem);
+      font-weight:800;
+      letter-spacing:.04em;
+      margin-bottom:.5rem;
+    }
+    .logo span{color:var(--accent)}
+    .divider{
+      width:80px;
+      height:3px;
+      background:var(--accent);
+      margin:1.2rem auto;
+      border-radius:2px;
+    }
+    h1{
+      font-size:clamp(1.4rem,3.5vw,2rem);
+      font-weight:700;
+      margin-bottom:1rem;
+    }
+    p{
       color:var(--muted);
-      padding:10px 4px 0 4px;
-      font-size:14px;
-      line-height:1.55;
+      font-size:1.05rem;
+      max-width:500px;
+      line-height:1.6;
+      margin-bottom:2rem;
     }
-    .faq .row{margin-bottom:10px}
-
-    .form label{display:block; font-size:13px; color:var(--muted); margin:10px 0 6px}
-    .form input, .form textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.25);
-      color: var(--text);
-      outline:none;
+    .badge{
+      display:inline-block;
+      padding:.5rem 1.4rem;
+      border:1px solid var(--accent);
+      border-radius:6px;
+      color:var(--accent);
+      font-weight:600;
+      font-size:.95rem;
+      letter-spacing:.03em;
     }
-    .form textarea{min-height:110px; resize:vertical}
-    .form .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    @media (max-width: 680px){ .form .row2{grid-template-columns:1fr} }
-    .note{color:var(--muted); font-size:12px; margin-top:8px}
-
-    footer{padding:24px 0 40px; color:var(--muted); font-size:13px}
-
-    /* Small contract embed */
-    .pdf-wrap{
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:16px;
-      overflow:hidden;
-      background: rgba(255,255,255,.02);
+    .contact{
+      margin-top:2.5rem;
+      color:var(--muted);
+      font-size:.9rem;
     }
-    .pdf-wrap iframe{
-      width:100%;
-      height: clamp(420px, 70vh, 780px);
-      border:0;
-      background: rgba(0,0,0,.2);
-      display:block;
+    .contact a{
+      color:var(--text);
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,.25);
     }
-  
-/* Lock header logo size so hero image styles never affect it */
-.brand img {
-  width: 200px !important;
-  height: 200px !important;
-  object-fit: contain !important;
-}
-
-
-/* Hero photo only */
-.hero-photo {
-  width: 100%;
-  height: clamp(420px, 55vw, 720px);
-  border-radius: 16px;
-  object-fit: cover;
-  object-position: center bottom;
-  display: block;
-  box-shadow: 0 12px 34px rgba(0,0,0,.45);
-}
-
-
-    @media (max-width: 680px){
-      .pdf-wrap iframe{ height: 78vh; }
-    }
-    
-
-
-    /* Mobile: prevent nav overflow and stack links */
-    @media (max-width: 860px){
-      .nav{flex-direction:column; align-items:flex-start; padding:14px 0;}
-      .brand{min-width:0; width:100%; gap:14px;}
-      .brand img{width:150px !important; height:150px !important;}
-      .links{width:100%; justify-content:flex-start; flex-wrap:wrap; gap:12px;}
-      .links a{padding:8px 10px; border-radius:999px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);}
-      .btn{white-space:nowrap;}
-      .topbar .container{padding-left:16px; padding-right:16px;}
-    }
-    
-</style>
+    .contact a:hover{border-color:var(--accent);color:var(--accent)}
+  </style>
 </head>
-
 <body>
-  <!-- Logo embedded directly in this HTML so it always shows (no separate file needed). -->
-  <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <div class="brand">
-          <img style="width:100%; height:clamp(420px, 55vw, 720px); border-radius:16px; object-fit:cover; object-position:center bottom; display:block; box-shadow: 0 12px 34px rgba(0,0,0,.45);" src="assets/images/roof-hero.webp" loading="lazy" alt="STL Public Adjusting logo" />
-          <div>
-            <div class="name">STL Public Adjusting</div>
-            <div class="tag">Public Adjuster & Appraisal Support</div>
-          </div>
-        </div>
-
-        <nav class="links">
-          <a href="#services">Services</a>
-          <a href="#contract">Contract</a>
-          <a href="#appraisal">Appraisal</a>
-          <a href="#faq">FAQ</a>
-          <a href="./blog.html">Blog</a>
-          <a href="./contact.html">Contact</a>
-          <a href="./contact-form.html#form" class="btn primary">Get Help Now</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-grid">
-        <div class="card">
-          <div class="kicker"><span class="dot"></span>Serving the St. Louis Metro • Missouri & Illinois</div>
-          <h1>Don’t accept an undervalued insurance settlement.</h1>
-          <p class="sub">
-            We help residential and commercial property owners document damages, prepare strong estimates,
-            and navigate claim disputes—including the appraisal process—so you can restore your property properly.
-          </p>
-
-          <div class="cta-row">
-           <a class="btn primary" href="./contact.html#form">Free Claim Review</a>
-            <a class="btn secondary" href="#contract">View Contract</a>
-            <a class="btn" href="#services">What We Handle</a>
-          </div>
-
-          <div class="mini">
-            <div class="pill"><b>Documentation</b><br/>Scope, photos, estimates, and support files.</div>
-            <div class="pill"><b>Negotiation</b><br/>We advocate for a fair, policy-backed outcome.</div>
-            <div class="pill"><b>Appraisal Support</b><br/><strong>Demand</strong> letters & panel prep.</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="badge">Fast start • Simple process</div>
-          <h2 style="margin:12px 0 10px;">Where do I start?</h2>
-          <p class="sub" style="margin-bottom:12px;">
-            Tell us what happened and we’ll confirm next steps (inspection, documentation, supplement, or appraisal).
-          </p>
-          <div class="cta-row">
-            <a class="btn" href="./contact.html#form">Check Claim</a>
-            <a class="btn" href="tel:+13149223083">Call: (314) 922-3083</a>
-          </div>
-
-          <div class="divider"></div>
-          <div class="fine">
-            Email: <a href="mailto:info@stlpublicadjusting.com">info@stlpublicadjusting.com</a><br/>
-            Website: STLpublicadjusting.com
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- FEATURE IMAGE (added above services) -->
-    <section class="section" aria-label="Roof inspection image">
-      <div class="card">
-        <img class="hero-photo"
-          src="assets/images/roof-hero.webp" loading="lazy"
-          alt="Roofer standing on a roof under storm clouds"
-          style="width:100%; height:clamp(420px, 55vw, 720px); border-radius:16px; object-fit:cover; object-position:center bottom; box-shadow: 0 12px 34px rgba(0,0,0,.45);"
-        />
-      </div>
-    </section>
-
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="card">
-        <h2>What we help with</h2>
-        <div class="grid3">
-          <div class="service hail">
-            <div class="inner">
-              <h3>Wind & Hail</h3>
-              <p>Roofing, siding, gutters, and exterior damage documentation and estimating.</p>
-            </div>
-          </div>
-          <div class="service water">
-            <div class="inner">
-              <h3>Water & Interior Loss</h3>
-              <p>Dry-out documentation, scope writing, and line-item estimates.</p>
-            </div>
-          </div>
-          <div class="service fire">
-            <div class="inner">
-              <h3>Fire & Smoke</h3>
-              <p>Inventory support, scope validation, and negotiation assistance.</p>
-            </div>
-          </div>
-</div>
-        <p class="note"></p>
-      </div>
-    </section>
-
-    <!-- CONTRACT -->
-    <section class="section" id="contract">
-      <div class="card">
-        <h2>Contract</h2>
-        <p class="sub" style="margin-bottom:10px;">
-          Download or review the current agreement below.
-        </p>
-
-        <div class="cta-row" style="margin-bottom:12px;">
-          <a class="btn primary" href="Penguin_Investments_Appraiser_Retainer_All_225_HR.pdf" target="_blank" rel="noopener">Download PDF</a>
-          <a class="btn" href="./contact.html#form">Questions? Contact us</a>
-        </div>
-
-        
-<div class="pdf-wrap">
-  <div style="padding:12px 14px;">
-    <a class="btn secondary" href="Penguin_Investments_Appraiser_Retainer_All_225_HR.pdf" target="_blank" rel="noopener">Open Contract PDF</a>
+  <div class="logo">STL <span>Public Adjusting</span></div>
+  <div class="divider"></div>
+  <h1>We'll Be Right Back</h1>
+  <p>Our site is currently undergoing maintenance while we finalize our licensing. We'll be back soon with full public adjusting services for the St. Louis area.</p>
+  <div class="badge">🚧 Coming Soon</div>
+  <div class="contact">
+    <p>Need to reach us now?<br>
+    <a href="mailto:info@stlpublicadjusting.com">info@stlpublicadjusting.com</a></p>
   </div>
-  <iframe title="Contract PDF" src="Penguin_Investments_Appraiser_Retainer_All_225_HR.pdf" loading="lazy"></iframe>
-</div>
-        </div>
-
-        <p class="fine" style="margin-top:10px;">
-          If the PDF does not display on your device, use the “Download PDF” button.
-        </p>
-      </div>
-    </section>
-
-    <!-- APPRAISAL -->
-    <section class="section" id="appraisal">
-      <div class="card">
-        <h2>Appraisal support</h2>
-        <div class="split">
-          <div>
-            <p class="sub" style="margin:0;">
-              If you and the carrier disagree on the amount of loss, your policy may allow appraisal.
-              We help organize documentation, prepare estimates, and coordinate the process.
-            </p>
-            <p class="quote">
-              Tip: Keep your claim file organized—photos, repair estimates, receipts, correspondence, and any reports.
-            </p>
-          </div>
-          <div>
-            <div class="pill">
-              <b>Need a Demand for Appraisal letter?</b><br/>
-              We can generate one based on your carrier, claim number, and policy details.
-            </div>
-            <div class="cta-row" style="margin-top:10px;">
-              <a class="btn primary" href="./contact.html#form">Request Appraisal Help</a>
-              <a class="btn" href="#faq">Appraisal FAQ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="card">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq">
-          <div class="row">
-            <button type="button" data-faq="1">What is a public adjuster? <span>+</span></button>
-            <div class="a" id="faq-1">
-              A public adjuster is a licensed professional who represents the policyholder (you). We help document damages,
-              prepare estimates, and advocate for a fair settlement.
-            </div>
-          </div>
-          <div class="row">
-            <button type="button" data-faq="2">How does appraisal work? <span>+</span></button>
-            <div class="a" id="faq-2">
-              Many policies allow appraisal when there’s a dispute over the amount of loss. Each party selects an appraiser,
-              and an umpire may be used if needed. Policy language controls the process and timelines.
-            </div>
-          </div>
-          <div class="row">
-            <button type="button" data-faq="3">What should I gather for you? <span>+</span></button>
-            <div class="a" id="faq-3">
-              Photos/videos of damage, your claim number, date of loss, any carrier estimate(s), and recent correspondence.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="card">
-        <h2>Get help now</h2>
-        <p class="sub">Send your details and we’ll respond with next steps.</p>
-
-        <form class="form" action="https://formspree.io/f/mlggdgpk" method="POST">
-          <input type="hidden" name="_subject" value="New STL Public Adjusting web lead" />
-          <div class="row2">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required placeholder="Your name" />
-            </div>
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" required placeholder="(###) ###-####" />
-            </div>
-          </div>
-
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@email.com" />
-
-          <div class="row2">
-            <div>
-              <label for="claim">Claim Number (optional)</label>
-              <input id="claim" name="claim" placeholder="Claim #" />
-            </div>
-            <div>
-              <label for="lossdate">Date of Loss (optional)</label>
-              <input id="lossdate" name="lossdate" placeholder="MM/DD/YYYY" />
-            </div>
-          </div>
-
-          <label for="message">What happened?</label>
-          <textarea id="message" name="message" required placeholder="Brief description of damage and what the carrier has done so far."></textarea>
-
-          <div class="cta-row" style="margin-top:12px;">
-            <button class="btn primary" type="submit">Send Request</button>
-            <a class="btn" href="tel:+13149223083">Call Now</a>
-          </div>
-
-          </form>
-      </div>
-    </section>
-
-    <footer>
-      <div class="divider"></div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
-        <div>© <span id="y"></span> STL Public Adjusting. All rights reserved.</div>
-        <div class="fine">STLpublicadjusting.com</div>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    // FAQ toggles
-    document.querySelectorAll('.faq button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-faq');
-        const a = document.getElementById('faq-' + id);
-        const open = a.style.display === 'block';
-        document.querySelectorAll('.faq .a').forEach(x => x.style.display='none');
-        document.querySelectorAll('.faq button span').forEach(s => s.textContent='+');
-        a.style.display = open ? 'none' : 'block';
-        btn.querySelector('span').textContent = open ? '+' : '–';
-      });
-    });
-
-    // Mailto form (free fallback)
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
