@@ -1,89 +1,210 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-76DD8BTM10"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-76DD8BTM10');
+</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STL Public Adjusting | Coming Soon</title>
-  <meta name="description" content="STL Public Adjusting — St. Louis public adjuster. Site under maintenance. Coming soon with full services." />
+  <title>STL Public Adjusting | St. Louis Public Adjuster</title>
+  <link rel="canonical" href="https://stlpublicadjusting.com/" />
+  <meta name="description" content="STL Public Adjusting — licensed public adjuster in St. Louis, Missouri. We help property owners navigate insurance claims, appraisals, and settlements." />
+
   <style>
     :root{
       --bg:#071018;
-      --panel:#0b1723;
       --text:#f3f6fb;
       --muted:#c2cbd8;
-      --accent:#c8102e;
+      --line:rgba(255,255,255,.10);
+      --red:#C41E3A;
+      --navy:#0C2340;
+      --radius:18px;
+      --max:1120px;
+      --pad:22px;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-      background:var(--bg);
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color:var(--text);
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:2rem;
+      background:
+        radial-gradient(1100px 700px at 15% 0%, rgba(196,30,58,.18) 0%, rgba(7,16,24,0) 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(12,35,64,.35) 0%, rgba(7,16,24,0) 55%),
+        linear-gradient(180deg, #061019 0%, var(--bg) 100%);
     }
-    .logo{
-      font-size:clamp(1.6rem,4vw,2.4rem);
-      font-weight:800;
-      letter-spacing:.04em;
-      margin-bottom:.5rem;
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .section{padding:40px 0}
+    h1{margin:0 0 8px; font-size:38px; letter-spacing:-.5px}
+    h2{margin:0 0 10px; font-size:26px; letter-spacing:-.2px}
+    .lead{color:var(--muted); font-size:17px; line-height:1.55; margin:0 0 18px}
+    .fine{font-size:12px; color:#aeb9c9; line-height:1.45}
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    @media(max-width:860px){ .grid2,.grid3{grid-template-columns:1fr} }
+
+    .topbar{
+      position:fixed; top:0; left:0; right:0; z-index:9999;
+      backdrop-filter:blur(10px);
+      background:rgba(7,16,24,.72);
+      border-bottom:1px solid var(--line);
     }
-    .logo span{color:var(--accent)}
-    .divider{
-      width:80px;
-      height:3px;
-      background:var(--accent);
-      margin:1.2rem auto;
-      border-radius:2px;
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0; gap:14px}
+    .brand{display:flex; align-items:center; gap:14px; min-width:260px}
+    .brand img{width:120px; height:120px; object-fit:contain}
+    .brand .name{font-size:22px; font-weight:900; letter-spacing:.3px}
+    .brand .tag{font-size:13px; color:var(--muted); margin-top:2px}
+    .links{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+    .links a{font-size:14px; color:var(--muted)}
+    .links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      gap:8px; font-weight:800; white-space:nowrap;
+      transition:.15s transform,.15s filter,.15s background;
     }
-    h1{
-      font-size:clamp(1.4rem,3.5vw,2rem);
-      font-weight:700;
-      margin-bottom:1rem;
+    .btn.primary{background:linear-gradient(135deg,var(--red),#ff4d6d); border-color:rgba(0,0,0,0); color:#140208}
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.05)}
+
+    .hero{text-align:center; padding:80px 0 50px}
+    .hero h1{font-size:clamp(2rem,5vw,3rem)}
+    .hero .lead{max-width:600px; margin:0 auto 24px}
+
+    .card{
+      background:rgba(11,23,35,.82);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      box-shadow:0 0 0 3px rgba(255,255,255,.25), 0 8px 28px rgba(0,0,0,.6);
+      padding:var(--pad);
     }
-    p{
-      color:var(--muted);
-      font-size:1.05rem;
-      max-width:500px;
-      line-height:1.6;
-      margin-bottom:2rem;
+    .card h3{margin:0 0 8px; font-size:18px}
+    .card p{color:var(--muted); font-size:14px; line-height:1.5; margin:0}
+
+    .post{border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.03); border-radius:16px; overflow:hidden}
+    .post-link{display:block; padding:16px; text-decoration:none}
+    .post-link:hover{background:rgba(255,255,255,.035)}
+    .post-title{font-size:16px; font-weight:900; letter-spacing:-.1px}
+
+    @media(max-width:860px){
+      .nav{flex-direction:column; align-items:flex-start; padding:14px 0}
+      .links{width:100%; justify-content:flex-start; flex-wrap:wrap; gap:12px}
+      .links a{padding:8px 10px; border-radius:999px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10)}
+      .brand img{width:90px; height:90px}
+      .hero{padding:60px 0 40px}
     }
-    .badge{
-      display:inline-block;
-      padding:.5rem 1.4rem;
-      border:1px solid var(--accent);
-      border-radius:6px;
-      color:var(--accent);
-      font-weight:600;
-      font-size:.95rem;
-      letter-spacing:.03em;
-    }
-    .contact{
-      margin-top:2.5rem;
-      color:var(--muted);
-      font-size:.9rem;
-    }
-    .contact a{
-      color:var(--text);
-      text-decoration:none;
-      border-bottom:1px solid rgba(255,255,255,.25);
-    }
-    .contact a:hover{border-color:var(--accent);color:var(--accent)}
   </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"STL Public Adjusting","url":"https://stlpublicadjusting.com","description":"Licensed public adjuster serving St. Louis, Missouri.","areaServed":["St. Louis","Missouri"]}</script>
 </head>
+
 <body>
-  <div class="logo">STL <span>Public Adjusting</span></div>
-  <div class="divider"></div>
-  <h1>We'll Be Right Back</h1>
-  <p>Our site is currently undergoing maintenance. We'll be back soon with full public adjusting services for the St. Louis area.</p>
-  <div class="badge">🚧 Coming Soon</div>
-  <div class="contact">
-    <p>Need to reach us now?<br>
-    <a href="mailto:info@stlpublicadjusting.com">info@stlpublicadjusting.com</a></p>
-  </div>
+  <header class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="/">
+          <img src="logo.png" alt="STL Public Adjusting logo" onerror="this.style.display='none'" />
+          <div>
+            <div class="name">STL Public Adjusting</div>
+            <div class="tag">Serving the St. Louis Metro • Missouri</div>
+          </div>
+        </a>
+        <nav class="links">
+          <a href="/blog.html">Blog</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/contact-form.html#form" class="btn primary">Get Help Now</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top:100px">
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Your Insurance Company Has a Team.<br>You Should Too.</h1>
+        <p class="lead">We help property owners in St. Louis navigate insurance claims, appraisals, and settlements — so you get what you're actually owed.</p>
+        <a href="/contact-form.html#form" class="btn primary" style="font-size:16px; padding:14px 24px">Request a Free Claim Review</a>
+      </section>
+
+      <!-- Services -->
+      <section class="section">
+        <h2>How We Help</h2>
+        <p class="lead">Public adjusting is about leveling the playing field.</p>
+        <div class="grid3" style="margin-top:18px">
+          <div class="card">
+            <h3>📋 Claim Review</h3>
+            <p>We review your claim, estimate, and policy to find what's missing or undervalued.</p>
+          </div>
+          <div class="card">
+            <h3>📐 Scope & Documentation</h3>
+            <p>Proper measurements, photos, and line items so your claim is backed by evidence.</p>
+          </div>
+          <div class="card">
+            <h3>⚖️ Appraisal Support</h3>
+            <p>When the carrier won't budge, we support the appraisal process with defensible estimates.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Posts -->
+      <section class="section">
+        <h2>Recent Posts</h2>
+        <p class="lead">Tips, checklists, and claim guidance.</p>
+        <ul style="list-style:none; padding:0; margin:18px 0 0; display:grid; grid-template-columns:1fr; gap:12px">
+          <li class="post">
+            <a class="post-link" href="/posts/2026-03-28-smoke-damage-claims-st-louis.html">
+              <div class="post-title">Smoke Damage Claims in St. Louis: What to Know Before You File</div>
+              <div class="fine">2026-03-28</div>
+            </a>
+          </li>
+          <li class="post">
+            <a class="post-link" href="/posts/2026-03-27-your-duty-to-mitigate.html">
+              <div class="post-title">Your Duty to Mitigate: What the Insurance Company Expects (and What They Can't Require)</div>
+              <div class="fine">2026-03-27</div>
+            </a>
+          </li>
+          <li class="post">
+            <a class="post-link" href="/posts/2026-03-21-wind-hail-deductibles-missouri.html">
+              <div class="post-title">Wind & Hail Deductibles: What Missouri Property Owners Need to Know</div>
+              <div class="fine">2026-03-21</div>
+            </a>
+          </li>
+        </ul>
+        <div style="margin-top:16px">
+          <a href="/blog.html" class="btn secondary">View All Posts</a>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section" style="text-align:center; padding-bottom:60px">
+        <div class="card" style="max-width:600px; margin:0 auto">
+          <h2>Think Your Claim Was Undervalued?</h2>
+          <p style="color:var(--muted); font-size:15px; line-height:1.6; margin:10px 0 18px">Request a free claim review. No obligation, no pressure — just an honest look at whether your settlement was fair.</p>
+          <a href="/contact-form.html#form" class="btn primary" style="font-size:15px; padding:12px 20px">Request Free Review</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const topbar = document.querySelector('.topbar');
+      function applyPad(){
+        if(!topbar) return;
+        document.body.style.paddingTop = topbar.offsetHeight + 'px';
+      }
+      window.addEventListener('load', applyPad);
+      window.addEventListener('resize', applyPad);
+      applyPad();
+    })();
+  </script>
 </body>
 </html>
