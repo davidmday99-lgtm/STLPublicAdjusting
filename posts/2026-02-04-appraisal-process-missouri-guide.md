@@ -1,5 +1,5 @@
 ---
-title: "How the Insurance Appraisal Process Works (Missouri & Illinois Guide)"
+title: "How the Insurance Appraisal Process Works (Missouri Guide)"
 date: "2026-02-04"
 length: "medium"
 audience: "residential, commercial"
@@ -9,11 +9,11 @@ cta_url: "/contact-form.html#form"
 cta_text: "Request appraisal support"
 ---
 
-# How the Insurance Appraisal Process Works (Missouri & Illinois Guide)
+# How the Insurance Appraisal Process Works (Missouri Guide)
 
 When you and the insurance carrier disagree on the **amount of loss** (the dollar value of the damage), many policies include an **appraisal** clause. Appraisal can be an effective tool—but only when you understand what it is (and what it isn’t).
 
-This is a general guide for Missouri and Illinois policyholders.
+This is a general guide for Missouri policyholders.
 
 > Note: Appraisal is governed by your policy language and your specific claim facts. This is educational information, not legal advice.
 
@@ -82,7 +82,7 @@ Appraisal can be a good option when:
 
 ## Need appraisal support?
 
-If you’re in the St. Louis metro (MO/IL), we can help organize documentation, scope the loss properly, and support the appraisal process.
+If you’re in the St. Louis metro (MO), we can help organize documentation, scope the loss properly, and support the appraisal process.
 
 **Request appraisal support:** /contact-form.html#form
 
