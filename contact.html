@@ -80,6 +80,81 @@
     }
     .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
 
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--red);
+      padding: 16px 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-logo img {
+      height: 180px;
+      width: auto;
+    }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+    }
+
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .brand-tag {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      transition: transform 0.2s;
+    }
+
+    .nav-links a:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .nav-logo img { height: 120px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.95rem; }
+      .brand-name { font-size: 1.2rem; }
+      .brand-tag { font-size: 0.8rem; }
+    }
+
     .info{
       margin:14px 0 14px;
       padding:14px;
@@ -93,6 +168,24 @@
 </head>
 
 <body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img src="logo.png" alt="STL Public Adjusting" />
+        <div class="nav-brand-text">
+          <span class="brand-name">STL Public Adjusting</span>
+          <span class="brand-tag">Serving St. Louis Metro • Missouri & Illinois</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="tel:3149223083">📞 314-922-3083</a></li>
+      </ul>
+    </div>
+  </nav>
+
 <main>
   <div class="container">
     <section class="section">
