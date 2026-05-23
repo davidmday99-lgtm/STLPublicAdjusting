@@ -4,277 +4,343 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Blog | STL Public Adjusting</title>
-  <meta name="description" content="Updates, tips, and guides from STL Public Adjusting." />
+  <meta name="description" content="Insurance claim tips, guides, and updates from STL Public Adjusting - St. Louis's trusted public adjuster." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --bg:#071018;
-      --panel:#0b1723;
-      --text:#f3f6fb;
-      --muted:#c2cbd8;
-      --line:rgba(255,255,255,.10);
-      --red:#C41E3A;
-      --navy:#0C2340;
-      --radius:18px;
-      --max:1120px;
-      --pad:22px;
+    :root {
+      --bg: #071018;
+      --card-bg: #0d1a26;
+      --text: #f3f6fb;
+      --muted: #a8b5c4;
+      --red: #C41E3A;
+      --red-hover: #e02244;
+      --border: rgba(255,255,255,0.1);
+      --shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 700px at 15% 0%, rgba(196,30,58,.18) 0%, rgba(7,16,24,0) 55%),
-        radial-gradient(900px 600px at 85% 10%, rgba(12,35,64,.35) 0%, rgba(7,16,24,0) 55%),
-        linear-gradient(180deg, #061019 0%, var(--bg) 100%);
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, #061019 0%, var(--bg) 100%);
+      color: var(--text);
+      min-height: 100vh;
     }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    a { color: inherit; text-decoration: none; }
 
-    .topbar{
-      position:fixed; top:0; left:0; right:0; z-index:9999;
-      backdrop-filter: blur(10px);
-      background: rgba(7,16,24,.72);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:18px 0;
-      gap:14px;
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--red);
+      padding: 16px 0;
     }
 
-    .brand{display:flex; align-items:center; gap:14px; min-width:260px}
-    .brand img{width:120px; height:120px; object-fit:contain}
-    .brand .name{font-size:22px; font-weight:900; letter-spacing:.3px}
-    .brand .tag{font-size:13px; color:var(--muted); margin-top:2px}
-
-    .links{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
-    .links a{font-size:14px; color:var(--muted)}
-    .links a:hover{color:var(--text)}
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      gap:8px;
-      font-weight:800;
-      white-space:nowrap;
-      transition:.15s transform, .15s filter, .15s background;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, var(--red), #ff4d6d);
-      border-color: rgba(0,0,0,0);
-      color:#140208;
-    }
-    .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
-
-    main{padding:38px 0 50px}
-
-    .card{
-      background: rgba(11,23,35,.82);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      box-shadow: 0 0 0 3px rgba(255,255,255,.25), 0 8px 28px rgba(0,0,0,.6);
-      padding: var(--pad);
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
 
-    h1{margin:0 0 8px; font-size:34px; letter-spacing:-.5px}
-    .sub{color:var(--muted); font-size:16px; line-height:1.55; margin:0 0 18px}
-
-    .posts{list-style:none; padding:0; margin:18px 0 0; display:grid; grid-template-columns:1fr; gap:12px}
-    .post{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-      overflow:hidden;
+    .nav-logo img {
+      height: 180px;
+      width: auto;
     }
-    .post-link{display:block; padding:16px; text-decoration:none;}
-    .post-link:hover{background: rgba(255,255,255,.035)}
-    .post-title{font-size:16px; font-weight:900; letter-spacing:-.1px;}
 
-    .fine{font-size:12px; color:#aeb9c9; line-height:1.45; margin-top:6px}
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-    @media (max-width: 860px){
-      .nav{flex-direction:column; align-items:flex-start; padding:14px 0;}
-      .links{width:100%; justify-content:flex-start; flex-wrap:wrap; gap:12px;}
-      .links a{padding:8px 10px; border-radius:999px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);}
-      .brand img{width:90px; height:90px;}
+    .nav-links a {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      transition: transform 0.2s;
+    }
+
+    .nav-links a:hover {
+      transform: scale(1.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: radial-gradient(ellipse at top, rgba(196,30,58,0.15) 0%, transparent 60%);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--red);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Blog Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Blog Items - Bubble Style */
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .blog-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 32px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .blog-item:hover {
+      border-color: var(--red);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(196,30,58,0.2);
+    }
+
+    .blog-date {
+      font-size: 0.85rem;
+      color: var(--red);
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .blog-item h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .blog-item h3 a {
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .blog-item h3 a:hover {
+      color: var(--red);
+    }
+
+    .blog-item p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, var(--red) 0%, #ff4d6d 100%);
+      margin-top: 60px;
+      border-radius: 24px;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 24px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--red);
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 50px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-logo img { height: 120px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.95rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .blog-item { padding: 22px 20px; }
+      .blog-item h3 { font-size: 1.15rem; }
+      .cta-section h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="/">
-          <img src="logo.png" alt="STL Public Adjusting logo" onerror="this.style.display='none'" />
-          <div>
-            <div class="name">STL Public Adjusting</div>
-            <div class="tag">Serving the St. Louis Metro • Missouri & Illinois</div>
-          </div>
-        </a>
-
-        <nav class="links">
-          <a href="/">Home</a>
-          <a href="/contact.html">Contact</a>
-          <a href="/contact-form.html#form" class="btn">Get Help Now</a>
-        </nav>
-      </div>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img src="logo.png" alt="STL Public Adjusting" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="tel:3149223083">📞 314-922-3083</a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
-  <main>
-    <div class="wrap">
-      <div class="card">
-        <h1>Blog</h1>
-        <p class="sub">Tips, checklists, and claim guidance. (0 queued drafts)</p>
+  <section class="hero">
+    <h1>Insurance Claim Tips & Guides</h1>
+    <p>Expert advice to help St. Louis homeowners maximize their insurance claims.</p>
+  </section>
 
-        <div class="sub" style="margin-top:4px;">
-          Latest posts (new post publishes daily at 7am CT)
-        </div>
+  <div class="container">
+    <div class="blog-list">
 
-        <ul class="posts">
-          
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-23-contractor-disputes-insurance-valuation-missouri.html">
-              <div class="post-title">When Contractors Disagree with Insurance Adjusters: Resolving Valuation Disputes in Missouri</div>
-              <div class="fine">2026-05-23</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 23, 2026</div>
+        <h3><a href="./posts/2026-05-23-contractor-disputes-insurance-valuation-missouri.html">When Contractors Disagree with Insurance Adjusters: Resolving Valuation Disputes in Missouri</a></h3>
+        <p>Learn how to navigate disputes between your contractor's estimate and the insurance company's valuation, and what steps to take to get fair compensation.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-22-spring-hail-storm-damage-claims-may.html">
-              <div class="post-title">Spring Hail Storm Damage Claims: What to Do After May Storms in St. Louis</div>
-              <div class="fine">2026-05-22</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 22, 2026</div>
+        <h3><a href="./posts/2026-05-22-spring-hail-storm-damage-claims-may.html">Spring Hail Storm Damage Claims: What to Do After May Storms in St. Louis</a></h3>
+        <p>May brings severe weather to the St. Louis area. Here's your guide to documenting damage and filing hail claims effectively.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-21-roof-claims-missouri-inspectors-settlement.html">
-              <div class="post-title">Roof Claims in Missouri: What Inspectors Look For and How to Maximize Settlement</div>
-              <div class="fine">2026-05-21</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 21, 2026</div>
+        <h3><a href="./posts/2026-05-21-roof-claims-missouri-inspectors-settlement.html">Roof Claims in Missouri: What Inspectors Look For and How to Maximize Settlement</a></h3>
+        <p>Understand what insurance inspectors evaluate during roof claims and strategies to ensure you receive full compensation for damage.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-20-water-damage-coverage-what-homeowners-need-to-know.html">
-              <div class="post-title">Water Damage Coverage: What's Actually Covered in Your Missouri Homeowners Policy</div>
-              <div class="fine">2026-05-20</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 20, 2026</div>
+        <h3><a href="./posts/2026-05-20-water-damage-coverage-what-homeowners-need-to-know.html">Water Damage Coverage: What's Actually Covered in Your Missouri Homeowners Policy</a></h3>
+        <p>Not all water damage is covered equally. Learn which types of water damage your policy covers and common exclusions to watch for.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-19-subrogation-rights-insurance-claims-missouri.html">
-              <div class="post-title">Subrogation Rights in Insurance Claims: What Missouri Homeowners Need to Know</div>
-              <div class="fine">2026-05-19</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 19, 2026</div>
+        <h3><a href="./posts/2026-05-19-subrogation-rights-insurance-claims-missouri.html">Subrogation Rights in Insurance Claims: What Missouri Homeowners Need to Know</a></h3>
+        <p>Understanding subrogation can impact your claim settlement. Learn how insurance companies recover costs and what it means for your payout.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-17-personal-property-coverage-contents-homeowners-insurance.html">
-              <div class="post-title">Contents and Personal Property Coverage: What's Protected in Your St. Louis Home Insurance Claim</div>
-              <div class="fine">2026-05-17</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 17, 2026</div>
+        <h3><a href="./posts/2026-05-17-personal-property-coverage-contents-homeowners-insurance.html">Contents and Personal Property Coverage: What's Protected in Your St. Louis Home Insurance Claim</a></h3>
+        <p>Your belongings matter. Learn how to properly document and claim personal property losses after damage to your home.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-09-water-damage-claim-timing-st-louis.html">
-              <div class="post-title">When to File a Water Damage Claim: Timing, Documentation, and Next Steps</div>
-              <div class="fine">2026-05-09</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 9, 2026</div>
+        <h3><a href="./posts/2026-05-09-water-damage-claim-timing-st-louis.html">When to File a Water Damage Claim: Timing, Documentation, and Next Steps</a></h3>
+        <p>Timing is critical for water damage claims. Learn when to file, what to document, and how to avoid common mistakes.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-05-insurance-claim-denial-appeal-missouri.html">
-              <div class="post-title">Insurance Claim Denied in Missouri? How to Appeal and Fight Back</div>
-              <div class="fine">2026-05-05</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 5, 2026</div>
+        <h3><a href="./posts/2026-05-05-insurance-claim-denial-appeal-missouri.html">Insurance Claim Denied in Missouri? How to Appeal and Fight Back</a></h3>
+        <p>A denial isn't the end. Learn the appeals process and strategies to overturn unfair claim denials in Missouri.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-04-fire-damage-soot-smoke-claim-st-louis.html">
-              <div class="post-title">Fire Damage & Soot Cleanup: What Your Homeowners Insurance Actually Covers in Missouri</div>
-              <div class="fine">2026-05-04</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 4, 2026</div>
+        <h3><a href="./posts/2026-05-04-fire-damage-soot-smoke-claim-st-louis.html">Fire Damage & Soot Cleanup: What Your Homeowners Insurance Actually Covers in Missouri</a></h3>
+        <p>Fire damage claims involve more than just structural repairs. Understand coverage for soot, smoke damage, and additional living expenses.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-03-appraisal-process-challenge-insurance-valuation-st-louis.html">
-              <div class="post-title">Appraisal Process in Missouri: How to Challenge Insurance Company Valuations</div>
-              <div class="fine">2026-05-03</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 3, 2026</div>
+        <h3><a href="./posts/2026-05-03-appraisal-process-challenge-insurance-valuation-st-louis.html">Appraisal Process in Missouri: How to Challenge Insurance Company Valuations</a></h3>
+        <p>When you disagree with the insurance company's valuation, the appraisal process gives you a path to fair compensation.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-02-structural-damage-water-pre-existing-conditions-st-louis.html">
-              <div class="post-title">Structural Damage from Water: When Claims Get Denied for 'Pre-Existing Conditions' in St. Louis</div>
-              <div class="fine">2026-05-02</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 2, 2026</div>
+        <h3><a href="./posts/2026-05-02-structural-damage-water-pre-existing-conditions-st-louis.html">Structural Damage from Water: When Claims Get Denied for 'Pre-Existing Conditions'</a></h3>
+        <p>Insurance companies often blame pre-existing conditions to deny claims. Learn how to fight back against unfair denials.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-05-01-basement-flooding-sump-pump-insurance-coverage-st-louis.html">
-              <div class="post-title">Basement Flooding & Sump Pump Failures: Insurance Coverage Gaps in St. Louis</div>
-              <div class="fine">2026-05-01</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">May 1, 2026</div>
+        <h3><a href="./posts/2026-05-01-basement-flooding-sump-pump-insurance-coverage-st-louis.html">Basement Flooding & Sump Pump Failures: Insurance Coverage Gaps in St. Louis</a></h3>
+        <p>Basement flooding is common but coverage is complicated. Learn what's covered and what endorsements you might need.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-05-roof-claim-denied-what-to-do.html">
-              <div class="post-title">Roof Claim Denied? What to Do Next (and What Not to Do)</div>
-              <div class="fine">2026-02-05</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">February 5, 2026</div>
+        <h3><a href="./posts/2026-02-05-roof-claim-denied-what-to-do.html">Roof Claim Denied? What to Do Next (and What Not to Do)</a></h3>
+        <p>Your roof claim was denied. Don't panic—here's a step-by-step guide to appealing the decision and getting coverage.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-04-appraisal-process-missouri-guide.html">
-              <div class="post-title">How the Insurance Appraisal Process Works (Missouri Guide)</div>
-              <div class="fine">2026-02-04</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">February 4, 2026</div>
+        <h3><a href="./posts/2026-02-04-appraisal-process-missouri-guide.html">How the Insurance Appraisal Process Works (Missouri Guide)</a></h3>
+        <p>The appraisal clause in your policy is powerful. Learn how to invoke it and what to expect during the process.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-03-7-signs-estimate-missing-money.html">
-              <div class="post-title">Undervalued Settlement? 7 Signs the Carrier’s Estimate Is Missing Money</div>
-              <div class="fine">2026-02-03</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">February 3, 2026</div>
+        <h3><a href="./posts/2026-02-03-7-signs-estimate-missing-money.html">Undervalued Settlement? 7 Signs the Carrier's Estimate Is Missing Money</a></h3>
+        <p>Insurance estimates often leave money on the table. Here are seven red flags that your settlement is too low.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-02-hail-damage-checklist.html">
-              <div class="post-title">Hail Damage Checklist: What to Document Before You Call the Insurance Company</div>
-              <div class="fine">2026-02-02</div>
-            </a>
-          </li>
+      <article class="blog-item">
+        <div class="blog-date">February 2, 2026</div>
+        <h3><a href="./posts/2026-02-02-hail-damage-checklist.html">Hail Damage Checklist: What to Document Before You Call the Insurance Company</a></h3>
+        <p>Proper documentation is crucial. Use this checklist to capture everything before filing your hail damage claim.</p>
+      </article>
 
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-01-public-adjuster-vs-insurance-adjuster.html">
-              <div class="post-title">Public Adjuster vs. Insurance Adjuster: What’s the Difference (and Why It Matters)</div>
-              <div class="fine">2026-02-01</div>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <article class="blog-item">
+        <div class="blog-date">February 1, 2026</div>
+        <h3><a href="./posts/2026-02-01-public-adjuster-vs-insurance-adjuster.html">Public Adjuster vs. Insurance Adjuster: What's the Difference (and Why It Matters)</a></h3>
+        <p>Understanding who works for whom can save you thousands. Learn the key differences between adjusters.</p>
+      </article>
+
     </div>
-  </main>
 
-  <script>
-    (function(){
-      const topbar = document.querySelector('.topbar');
-      function applyPad(){
-        if(!topbar) return;
-        document.body.style.paddingTop = topbar.offsetHeight + 'px';
-      }
-      window.addEventListener('load', applyPad);
-      window.addEventListener('resize', applyPad);
-      applyPad();
-    })();
-  </script>
+    <div class="cta-section">
+      <h2>Need Help With Your Claim?</h2>
+      <p>Get a free claim review from St. Louis's trusted public adjuster.</p>
+      <a href="/contact-form.html" class="cta-btn">Get Free Consultation</a>
+    </div>
+  </div>
+
 </body>
 </html>
