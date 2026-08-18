@@ -1,196 +1,60 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Blog | STL Public Adjusting</title>
-  <meta name="description" content="Updates, tips, and guides from STL Public Adjusting." />
-
-  <style>
-    :root{
-      --bg:#071018;
-      --panel:#0b1723;
-      --text:#f3f6fb;
-      --muted:#c2cbd8;
-      --line:rgba(255,255,255,.10);
-      --red:#C41E3A;
-      --navy:#0C2340;
-      --radius:18px;
-      --max:1120px;
-      --pad:22px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 700px at 15% 0%, rgba(196,30,58,.18) 0%, rgba(7,16,24,0) 55%),
-        radial-gradient(900px 600px at 85% 10%, rgba(12,35,64,.35) 0%, rgba(7,16,24,0) 55%),
-        linear-gradient(180deg, #061019 0%, var(--bg) 100%);
-    }
-
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-
-    .topbar{
-      position:fixed; top:0; left:0; right:0; z-index:9999;
-      backdrop-filter: blur(10px);
-      background: rgba(7,16,24,.72);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:18px 0;
-      gap:14px;
-    }
-
-    .brand{display:flex; align-items:center; gap:14px; min-width:260px}
-    .brand img{width:120px; height:120px; object-fit:contain}
-    .brand .name{font-size:22px; font-weight:900; letter-spacing:.3px}
-    .brand .tag{font-size:13px; color:var(--muted); margin-top:2px}
-
-    .links{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
-    .links a{font-size:14px; color:var(--muted)}
-    .links a:hover{color:var(--text)}
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      gap:8px;
-      font-weight:800;
-      white-space:nowrap;
-      transition:.15s transform, .15s filter, .15s background;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, var(--red), #ff4d6d);
-      border-color: rgba(0,0,0,0);
-      color:#140208;
-    }
-    .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
-
-    main{padding:38px 0 50px}
-
-    .card{
-      background: rgba(11,23,35,.82);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      box-shadow: 0 0 0 3px rgba(255,255,255,.25), 0 8px 28px rgba(0,0,0,.6);
-      padding: var(--pad);
-    }
-
-    h1{margin:0 0 8px; font-size:34px; letter-spacing:-.5px}
-    .sub{color:var(--muted); font-size:16px; line-height:1.55; margin:0 0 18px}
-
-    .posts{list-style:none; padding:0; margin:18px 0 0; display:grid; grid-template-columns:1fr; gap:12px}
-    .post{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-      overflow:hidden;
-    }
-    .post-link{display:block; padding:16px; text-decoration:none;}
-    .post-link:hover{background: rgba(255,255,255,.035)}
-    .post-title{font-size:16px; font-weight:900; letter-spacing:-.1px;}
-
-    .fine{font-size:12px; color:#aeb9c9; line-height:1.45; margin-top:6px}
-
-    @media (max-width: 860px){
-      .nav{flex-direction:column; align-items:flex-start; padding:14px 0;}
-      .links{width:100%; justify-content:flex-start; flex-wrap:wrap; gap:12px;}
-      .links a{padding:8px 10px; border-radius:999px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);}
-      .brand img{width:90px; height:90px;}
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Property Insurance Claim Guides | STL Public Adjusting</title>
+  <meta name="description" content="Practical St. Louis property insurance claim guides covering storm, water, fire, appraisal, documentation, and claim settlement questions.">
+  <link rel="canonical" href="https://stlpublicadjusting.com/blog.html">
+  <meta property="og:title" content="Property Insurance Claim Guides | STL Public Adjusting">
+  <meta property="og:description" content="Clear, practical property claim guidance for Missouri and Illinois owners.">
+  <meta property="og:image" content="https://stlpublicadjusting.com/hero-bg.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="/">
-          <img src="logo.png" alt="STL Public Adjusting logo" onerror="this.style.display='none'" />
-          <div>
-            <div class="name">STL Public Adjusting</div>
-            <div class="tag">Serving the St. Louis Metro • Missouri & Illinois</div>
-          </div>
-        </a>
-
-        <nav class="links">
-          <a href="/">Home</a>
-          <a href="/contact.html">Contact</a>
-          <a href="/contact-form.html#form" class="btn">Get Help Now</a>
-        </nav>
-      </div>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/"><img src="logo.png" alt="STL Public Adjusting penguin logo"><span class="brand-copy"><strong>STL Public Adjusting</strong><small>Missouri + Illinois claim advocacy</small></span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span></button>
+      <nav class="site-nav"><a href="/#services">Services</a><a href="/#process">Process</a><a href="blog.html">Claim Guides</a><a href="contact.html">Contact</a><a class="btn btn-orange" href="contact.html#claim-review">Request a claim review</a></nav>
     </div>
   </header>
-
   <main>
-    <div class="wrap">
-      <div class="card">
-        <h1>Blog</h1>
-        <p class="sub">Tips, checklists, and claim guidance. (0 queued drafts)</p>
-
-        <div class="sub" style="margin-top:4px;">
-          Latest posts (new post publishes daily at 7am CT)
+    <section class="page-hero">
+      <div class="container"><p class="eyebrow">The claim desk</p><h1 class="display-title">Clear answers for complicated property claims.</h1><p>Practical guides for documenting damage, reading estimates, preparing for inspections, and asking better questions throughout a Missouri or Illinois property claim.</p></div>
+    </section>
+    <section class="section section-soft">
+      <div class="container">
+        <div class="filters" aria-label="Filter articles">
+          <button class="filter-button active" type="button" data-filter="all">All guides</button>
+          <button class="filter-button" type="button" data-filter="documentation">Documentation</button>
+          <button class="filter-button" type="button" data-filter="storm">Storm + roof</button>
+          <button class="filter-button" type="button" data-filter="water">Water + fire</button>
+          <button class="filter-button" type="button" data-filter="settlement">Settlement + appraisal</button>
         </div>
-
-        <ul class="posts">
-          
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-05-roof-claim-denied-what-to-do.html">
-              <div class="post-title">Roof Claim Denied? What to Do Next (and What Not to Do)</div>
-              <div class="fine">2026-02-05</div>
-            </a>
-          </li>
-
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-04-appraisal-process-missouri-guide.html">
-              <div class="post-title">How the Insurance Appraisal Process Works (Missouri Guide)</div>
-              <div class="fine">2026-02-04</div>
-            </a>
-          </li>
-
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-03-7-signs-estimate-missing-money.html">
-              <div class="post-title">Undervalued Settlement? 7 Signs the Carrier’s Estimate Is Missing Money</div>
-              <div class="fine">2026-02-03</div>
-            </a>
-          </li>
-
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-02-hail-damage-checklist.html">
-              <div class="post-title">Hail Damage Checklist: What to Document Before You Call the Insurance Company</div>
-              <div class="fine">2026-02-02</div>
-            </a>
-          </li>
-
-          <li class="post">
-            <a class="post-link" href="./posts/2026-02-01-public-adjuster-vs-insurance-adjuster.html">
-              <div class="post-title">Public Adjuster vs. Insurance Adjuster: What’s the Difference (and Why It Matters)</div>
-              <div class="fine">2026-02-01</div>
-            </a>
-          </li>
-        </ul>
+        <div class="article-grid">
+          <article class="article-card featured" data-topic="settlement"><span class="tag">New · Claim supplements</span><time datetime="2026-08-18">August 18, 2026</time><h3>What is a supplemental claim—and when should you ask for one?</h3><p>What a supplement can address, what supports the request, and how to present it clearly.</p><a href="posts/2026-08-18-insurance-claim-supplement-st-louis.html">Read the guide</a></article>
+          <article class="article-card" data-topic="documentation"><span class="tag">New · Inspection prep</span><time datetime="2026-08-18">August 18, 2026</time><h3>Your insurance adjuster inspection checklist</h3><p>Prepare the property, paperwork, and questions before the adjuster arrives.</p><a href="posts/2026-08-18-prepare-insurance-adjuster-inspection-st-louis.html">Use the checklist</a></article>
+          <article class="article-card" data-topic="documentation"><span class="tag">New · Claim organization</span><time datetime="2026-08-18">August 18, 2026</time><h3>Build a claim communication log that actually helps</h3><p>Track every call, request, document, and open question in one reliable record.</p><a href="posts/2026-08-18-insurance-claim-communication-log.html">Build your log</a></article>
+          <article class="article-card archive-card" data-topic="storm"><span class="tag">Storm</span><time datetime="2026-06-21">June 21, 2026</time><h3>Summer storm damage insurance claims</h3><p>A practical guide to documenting wind, hail, and storm damage across the St. Louis region.</p><a href="posts/2026-06-21-summer-storm-damage-insurance-claims.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="settlement"><span class="tag">Choosing help</span><time datetime="2026-06-20">June 20, 2026</time><h3>How to choose a public adjuster in St. Louis</h3><p>Questions to ask about licensing, services, communication, fees, and claim experience.</p><a href="posts/2026-06-20-how-to-choose-public-adjuster-st-louis.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="documentation"><span class="tag">Working with adjusters</span><time datetime="2026-06-07">June 7, 2026</time><h3>Working with insurance adjusters</h3><p>What to expect and how to keep the claim conversation organized.</p><a href="posts/2026-06-07-working-with-insurance-adjusters-guide.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="documentation"><span class="tag">Photographs</span><time datetime="2026-06-06">June 6, 2026</time><h3>Storm damage documentation and photography tips</h3><p>Build a more useful visual record without putting yourself in danger.</p><a href="posts/2026-06-06-storm-damage-documentation-photography-tips.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="storm"><span class="tag">Hail</span><time datetime="2026-06-02">June 2, 2026</time><h3>St. Louis hail damage claims</h3><p>What homeowners should inspect, preserve, and ask after a Missouri hailstorm.</p><a href="posts/2026-06-02-st-louis-missouri-hail-damage-claims.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="settlement"><span class="tag">Timelines</span><time datetime="2026-06-01">June 1, 2026</time><h3>Missouri and Illinois insurance claim timelines</h3><p>A plain-language overview of the milestones and policy-driven deadlines that can shape a claim.</p><a href="posts/2026-06-01-missouri-illinois-insurance-claim-timelines.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="documentation"><span class="tag">Proof of loss</span><time datetime="2026-05-26">May 26, 2026</time><h3>Understanding proof-of-loss requests</h3><p>What the form is, why the details matter, and why policy language should guide the response.</p><a href="posts/2026-05-26-proof-of-loss-insurance-claim-st-louis.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="settlement"><span class="tag">Contractor estimates</span><time datetime="2026-05-23">May 23, 2026</time><h3>Contractor disputes and insurance valuation</h3><p>How scope differences can create large gaps between repair bids and carrier estimates.</p><a href="posts/2026-05-23-contractor-disputes-insurance-valuation-missouri.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="storm"><span class="tag">Roof claims</span><time datetime="2026-05-21">May 21, 2026</time><h3>Roof claims in Missouri</h3><p>What inspectors consider when assessing storm-related roof damage and repair scope.</p><a href="posts/2026-05-21-roof-claims-missouri-inspectors-settlement.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="water"><span class="tag">Water damage</span><time datetime="2026-05-20">May 20, 2026</time><h3>Water damage coverage for homeowners</h3><p>Why the source and timing of water damage matter when reading coverage.</p><a href="posts/2026-05-20-water-damage-coverage-what-homeowners-need-to-know.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="settlement"><span class="tag">Depreciation</span><time datetime="2026-04-29">April 29, 2026</time><h3>Depreciation and replacement cost coverage</h3><p>Understand the difference between initial actual-cash-value payments and recoverable depreciation.</p><a href="posts/2026-04-29-depreciation-replacement-cost-coverage-st-louis.html">Read the guide</a></article>
+          <article class="article-card archive-card" data-topic="water"><span class="tag">Fire + smoke</span><time datetime="2026-05-04">May 4, 2026</time><h3>Fire damage, soot, and smoke claims</h3><p>Why the scope of a fire loss can extend beyond the visibly burned area.</p><a href="posts/2026-05-04-fire-damage-soot-smoke-claim-st-louis.html">Read the guide</a></article>
+        </div>
       </div>
-    </div>
+    </section>
+    <section class="proof-band"><div class="container"><p>Have a claim question the guides do not answer?</p><a class="btn btn-light" href="contact.html#claim-review">Tell us what happened</a></div></section>
   </main>
-
-  <script>
-    (function(){
-      const topbar = document.querySelector('.topbar');
-      function applyPad(){
-        if(!topbar) return;
-        document.body.style.paddingTop = topbar.offsetHeight + 'px';
-      }
-      window.addEventListener('load', applyPad);
-      window.addEventListener('resize', applyPad);
-      applyPad();
-    })();
-  </script>
+  <footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><strong>STL Public Adjusting</strong><p>Property claim documentation and advocacy for homeowners and businesses across the St. Louis metro, Missouri, and Illinois.</p></div><div class="footer-col"><strong>Explore</strong><a href="/">Home</a><a href="/#services">Services</a><a href="blog.html">Claim guides</a></div><div class="footer-col"><strong>Contact</strong><a href="tel:+13149223083">314-922-3083</a><a href="contact.html">Send claim details</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> STL Public Adjusting</span><span>Educational information only—not legal advice. Coverage depends on the policy and facts of each loss.</span></div></div></footer>
+  <a class="mobile-call" href="tel:+13149223083">Call 314-922-3083</a>
+  <script src="script.js"></script>
 </body>
 </html>
