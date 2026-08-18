@@ -2,8 +2,7 @@ name: Daily blog publish
 
 on:
   schedule:
-    # 7:00 AM America/Chicago is 13:00 UTC during CST (winter) and 12:00 UTC during CDT (summer).
-    # We'll run at 13:00 UTC. If you want exact local-time alignment year-round, we can adjust to a dual schedule.
+    # 7:00 AM America/Chicago is 13:00 UTC during CST and 12:00 UTC during CDT.
     - cron: '0 13 * * *'
   workflow_dispatch:
 
@@ -27,9 +26,8 @@ jobs:
       - name: Render posts
         run: node scripts/render-post.mjs
 
-      - name: Build blog index
-        run: node scripts/build-blog.mjs
-
+      # blog.html is now a hand-curated responsive index. Rebuilding it with the
+      # legacy generator would overwrite the approved design and featured guides.
       - name: Build sitemap
         run: node scripts/build-sitemap.mjs
 
