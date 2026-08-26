@@ -86,6 +86,7 @@ async function renderOne(filePath){
   const date = meta.date || '';
   const author = meta.author || '';
   const htmlBody = mdToHtml(body);
+  const postUrl = `https://stlpublicadjusting.com/posts/${path.basename(filePath, '.md')}.html`;
 
   return `<!doctype html>
 <html lang="en">
@@ -93,6 +94,7 @@ async function renderOne(filePath){
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>${escapeHtml(title)} | STL Public Adjusting</title>
+  <link rel="canonical" href="${escapeHtml(postUrl)}" />
   <meta name="description" content="${escapeHtml(title)}" />
   <style>
     :root{
@@ -152,7 +154,7 @@ async function renderOne(filePath){
         <nav class="links">
           <a href="/">Home</a>
           <a href="/blog.html">Blog</a>
-          <a href="/contact-form.html#form">Get Help Now</a>
+          <a href="/contact.html#claim-review">Get Help Now</a>
         </nav>
       </div>
     </div>
